@@ -22,7 +22,7 @@ setDefaultTimeout(60000);
 
 Before(async function() {
   // Launch browser in headless mode
-  this.browser = await chromium.launch({ headless: false });
+  this.browser = await chromium.launch({ headless: true });
 
   // Define viewport size based on the environment variable VIEWPORT
   let device = {};
