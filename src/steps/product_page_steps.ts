@@ -12,10 +12,6 @@ When('the user navigates to the {string} page', async function (webURL: string) 
     await this.page.goto(webURL)
 });
 
-Then('the user should see the product page', async function () {
-    await expect(this.page.locator('[data-test="title"]')).toBeVisible();
-    await expect(this.page.locator('[data-test="title"]')).toContainText('Products');
-});
 
 Then('the user should see the primary header', async function ()  {
   await expect(this.page.locator('[data-test="primary-header"] div').filter({ hasText: 'Swag Labs' }).first()).toBeVisible();

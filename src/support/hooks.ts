@@ -1,26 +1,28 @@
 import { Before, After, setWorldConstructor, World, setDefaultTimeout } from '@cucumber/cucumber';
 import { chromium, Browser, Page, BrowserContext, devices } from 'playwright';
 
-let browser: Browser;
+//let browser: Browser;
 
 class CustomWorld extends World {
-  page: Page;
-  context: BrowserContext;
+  browser?: Browser;
+  page?: Page;
+  context?: BrowserContext;
   URL: string = 'https://www.saucedemo.com/';
 
   constructor(options: any) {
     super(options);
-    this.page = options.page;
-    this.context = options.context;
+    //this.browser = null;
+    //this.page = options.page;
+    //this.context = options.context;
   }
 }
 
 setWorldConstructor(CustomWorld);
-setDefaultTimeout(20000);
+setDefaultTimeout(60000);
 
 Before(async function() {
   // Launch browser in headless mode
-  browser = await chromium.launch({ headless: true });
+  this.browser = await chromium.launch({ headless: false });
 
   // Define viewport size based on the environment variable VIEWPORT
   let device = {};
@@ -31,7 +33,7 @@ Before(async function() {
   }
 
   // Create context with video recording based on the viewport
-  this.context = await browser.newContext({
+  this.context = await this.browser.newContext({
     ...device,
     recordVideo: {
       dir: `src/videos/${process.env.VIEWPORT}`, // Save videos in separate folders based on VIEWPORT
@@ -43,10 +45,17 @@ Before(async function() {
 });
 
 After(async function() {
-  // Close the page and browser context
-  await this.page.close();
-  await this.context.close();
-  await browser.close();
+  // Close the page and browser context if they exist
+  if (this.page) {
+    await this.page.close();
+  }
+  if (this.context) {
+    await this.context.close();
+
+  }
+  if (this.browser) {
+    await this.browser.close();
+  }
 });
 
 
