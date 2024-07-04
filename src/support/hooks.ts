@@ -6,7 +6,7 @@ let browser: Browser;
 class CustomWorld extends World {
   page: Page;
   context: BrowserContext;
-  URL: string = 'https://bootcampqa.com';
+  URL: string = 'https://www.saucedemo.com/';
 
   constructor(options: any) {
     super(options);
