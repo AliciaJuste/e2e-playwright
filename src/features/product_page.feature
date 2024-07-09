@@ -1,14 +1,13 @@
 Feature: Product page content
-    Background:     
+
+    @product_page
+    Scenario: The user see the product list
         Given the user is on the Saucelabs page "https://www.saucedemo.com/"
         When the user is logged in with username "standard_user" and password "secret_sauce"
         And the user navigates to the "https://www.saucedemo.com/inventory.html" page
-
-    Scenario: The user see the product list
-        Then the user should see the primary header
-        And the user should see the secondary header
-        And the user should see the product list
-        And the user should see the footer
-
-    Scenario: Check that 6 items are displayed in the inventory list
-        Then the user should see 6 items in the inventory list
+        Then the user should see the webpage title "Swag Labs"
+        And the user should see the menu button and the cart button
+        And the user should see the page title "Products" and the button filter with "az" order
+        And the user should see the product list with 6 items
+        And the user should see the social media buttons for "twitter", "facebook" and "linkedin"
+        And the user should see the copyright
