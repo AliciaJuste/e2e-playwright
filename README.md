@@ -50,5 +50,4 @@ npx playwright codegen playwright.dev
 
 
 ## Autora
-Alicia Juste: https://www.linkedin.com/in/aliciajuste
-
+Alicia Juste: https://www.linkedin.com/in/alicia-juste/
