@@ -18,7 +18,7 @@ class CustomWorld extends World {
 }
 
 setWorldConstructor(CustomWorld);
-setDefaultTimeout(60000);
+setDefaultTimeout(120000);
 
 Before(async function() {
   // Launch browser in headless mode

@@ -1,8 +1,8 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
-Given('the user is on the Saucelabs page {string}', async function (webURL) {
-    await this.page.goto(webURL, { timeout: 60000 });
+Given('the user is on the Saucelabs page {string}', async function (webURL: string) {
+    await this.page.goto(webURL);
 });
 
 When('the user fill username with {string}', async function(username: string) {
